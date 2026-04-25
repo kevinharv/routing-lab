@@ -1,0 +1,44 @@
+name: enterprise-hybrid-cloud
+
+topology:
+  nodes:
+    us-dxgw:
+     kind: linux
+     image: frrouting/frr:latest
+     binds:
+      - configs/daemons:/etc/frr/daemons
+      - configs/us-dxgw.conf:/etc/frr/frr.conf 
+
+    us-east-1:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs//daemons:/etc/frr/daemons
+        - configs/us-east-1.conf:/etc/frr/frr.conf
+    
+    us-west-2:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/us-west-2.conf:/etc/frr/frr.conf
+
+    dc1:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/dc1.conf:/etc/frr/frr.conf
+
+    dc2:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/dc2.conf:/etc/frr/frr.conf
+
+  links:
+    - endpoints: ["us-dxgw:eth1", "us-east-1:eth1"]
+    - endpoints: ["us-dxgw:eth2", "us-west-2:eth1"]
+    - endpoints: ["us-dxgw:eth3", "dc1:eth1"]
+    - endpoints: ["us-dxgw:eth4", "dc2:eth1"]

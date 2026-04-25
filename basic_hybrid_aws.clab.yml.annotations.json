@@ -1,0 +1,47 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "us-dxgw",
+      "position": {
+        "x": 420,
+        "y": 360
+      }
+    },
+    {
+      "id": "us-east-1",
+      "position": {
+        "x": 520,
+        "y": 260
+      }
+    },
+    {
+      "id": "us-west-2",
+      "position": {
+        "x": 320,
+        "y": 260
+      }
+    },
+    {
+      "id": "dc1",
+      "position": {
+        "x": 320,
+        "y": 480
+      }
+    },
+    {
+      "id": "dc2",
+      "position": {
+        "x": 520,
+        "y": 480
+      }
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}
