@@ -37,10 +37,42 @@ topology:
         - configs/daemons:/etc/frr/daemons
         - configs/hub2.conf:/etc/frr/frr.conf
 
+    dc1:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/dc1.conf:/etc/frr/frr.conf
+    
+    dc2:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/dc2.conf:/etc/frr/frr.conf
+
+    dc3:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/dc3.conf:/etc/frr/frr.conf
+
   links:
+    # AWS Direct Connect Links
     - endpoints: ["us-dxgw:eth1", "us-east-1:eth1"]
     - endpoints: ["us-dxgw:eth2", "us-west-2:eth1"]
     - endpoints: ["us-dxgw:eth3", "hub1:eth1"]
     - endpoints: ["us-dxgw:eth4", "hub2:eth1"]
-    - endpoints: ["hub1:eth2", "hub2:eth2"]             # Data center interconnect
-    - endpoints: ["us-east-1:eth2", "us-west-2:eth2"]   # AWS Full Mesh - us-east-1/us-west-2
+
+    # AWS Regions Full Mesh
+    - endpoints: ["us-east-1:eth2", "us-west-2:eth2"]
+
+    # Data Center Interconnects
+    - endpoints: ["hub1:eth2", "hub2:eth2"]
+    - endpoints: ["hub1:eth3", "dc1:eth1"]
+    - endpoints: ["hub1:eth4", "dc2:eth1"]
+    - endpoints: ["hub1:eth5", "dc3:eth1"]
+    - endpoints: ["hub2:eth3", "dc1:eth2"]
+    - endpoints: ["hub2:eth4", "dc2:eth2"]
+    - endpoints: ["hub2:eth5", "dc3:eth2"]
