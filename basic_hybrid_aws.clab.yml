@@ -23,22 +23,24 @@ topology:
         - configs/daemons:/etc/frr/daemons
         - configs/us-west-2.conf:/etc/frr/frr.conf
 
-    dc1:
+    hub1:
       kind: linux
       image: frrouting/frr:latest
       binds:
         - configs/daemons:/etc/frr/daemons
-        - configs/dc1.conf:/etc/frr/frr.conf
+        - configs/hub1.conf:/etc/frr/frr.conf
 
-    dc2:
+    hub2:
       kind: linux
       image: frrouting/frr:latest
       binds:
         - configs/daemons:/etc/frr/daemons
-        - configs/dc2.conf:/etc/frr/frr.conf
+        - configs/hub2.conf:/etc/frr/frr.conf
 
   links:
     - endpoints: ["us-dxgw:eth1", "us-east-1:eth1"]
     - endpoints: ["us-dxgw:eth2", "us-west-2:eth1"]
-    - endpoints: ["us-dxgw:eth3", "dc1:eth1"]
-    - endpoints: ["us-dxgw:eth4", "dc2:eth1"]
+    - endpoints: ["us-dxgw:eth3", "hub1:eth1"]
+    - endpoints: ["us-dxgw:eth4", "hub2:eth1"]
+    - endpoints: ["hub1:eth2", "hub2:eth2"]             # Data center interconnect
+    - endpoints: ["us-east-1:eth2", "us-west-2:eth2"]   # AWS Full Mesh - us-east-1/us-west-2
