@@ -23,6 +23,13 @@ topology:
         - configs/daemons:/etc/frr/daemons
         - configs/us-west-2.conf:/etc/frr/frr.conf
 
+    ap-northeast-1:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/ap-northeast-1.conf:/etc/frr/frr.conf
+
     hub1:
       kind: linux
       image: frrouting/frr:latest
@@ -67,6 +74,8 @@ topology:
 
     # AWS Regions Full Mesh
     - endpoints: ["us-east-1:eth2", "us-west-2:eth2"]
+    - endpoints: ["us-east-1:eth3", "ap-northeast-1:eth1"]
+    - endpoints: ["us-west-2:eth3", "ap-northeast-1:eth2"]
 
     # Data Center Interconnects
     - endpoints: ["hub1:eth2", "hub2:eth2"]
