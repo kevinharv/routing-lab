@@ -58,12 +58,8 @@ This is a [containerlab](https://containerlab.dev/) lab environment for learning
 
 ## Roadmap and Objectives
 
-1. Segment production and non-production traffic
-    - Maybe VRFs
-    - Maybe just advertise multiple prefixes for simplicity :)
-1. Configure ECMP for hub links
 1. Traffic steering with BGP attributes
-   - Local preference
-   - AS path prepending
+   - ~~Local preference~~
+   - ~~AS path prepending~~
    - MED
    - BGP communities
