@@ -1,0 +1,21 @@
+name: enterprise-edge
+
+topology:
+  nodes:
+    dev-dxgw:
+     kind: linux
+     image: frrouting/frr:latest
+     binds:
+      - configs/daemons:/etc/frr/daemons
+      - configs/aws/dev-dxgw.conf:/etc/frr/frr.conf 
+
+    h1edgesw1a:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/daemons:/etc/frr/daemons
+        - configs/dc/h1edgesw1a.conf:/etc/frr/frr.conf
+
+  links:
+    # AWS Direct Connect Links
+    - endpoints: ["dev-dxgw:eth1", "h1edgesw1a:eth1"]

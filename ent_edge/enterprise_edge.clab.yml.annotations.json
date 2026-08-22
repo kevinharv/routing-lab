@@ -1,0 +1,75 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "us-dxgw",
+      "position": {
+        "x": 420,
+        "y": 340
+      }
+    },
+    {
+      "id": "us-east-1",
+      "position": {
+        "x": 520,
+        "y": 240
+      }
+    },
+    {
+      "id": "us-west-2",
+      "position": {
+        "x": 320,
+        "y": 240
+      }
+    },
+    {
+      "id": "dc1",
+      "position": {
+        "x": 280,
+        "y": 600
+      }
+    },
+    {
+      "id": "dc2",
+      "position": {
+        "x": 420,
+        "y": 600
+      }
+    },
+    {
+      "id": "dc3",
+      "position": {
+        "x": 560,
+        "y": 600
+      }
+    },
+    {
+      "id": "hub2",
+      "position": {
+        "x": 520,
+        "y": 440
+      }
+    },
+    {
+      "id": "hub1",
+      "position": {
+        "x": 320,
+        "y": 440
+      }
+    },
+    {
+      "id": "ap-northeast-1",
+      "position": {
+        "x": 200,
+        "y": 340
+      }
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}
